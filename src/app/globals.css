@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  --emerald: #075e45;
+  --emerald-deep: #054a36;
+  --emerald-soft: #0a7a58;
+  --navy: #102a43;
+  --navy-soft: #243b53;
+  --gold: #d4af37;
+  --gold-soft: #e6c65c;
+  --ivory: #faf8f2;
+  --ivory-deep: #f3efe4;
+  --white: #ffffff;
+  --background: var(--ivory);
+  --foreground: var(--navy);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-emerald: var(--emerald);
+  --color-emerald-deep: var(--emerald-deep);
+  --color-emerald-soft: var(--emerald-soft);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-ivory: var(--ivory);
+  --color-ivory-deep: var(--ivory-deep);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--emerald) 25%, white);
+  color: var(--navy);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.islamic-pattern {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgb(212 175 55 / 0.08), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgb(7 94 69 / 0.12), transparent 40%),
+    linear-gradient(135deg, rgb(16 42 67 / 0.03) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23075E45' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.gold-rule {
+  height: 2px;
+  width: 4rem;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes count-glow {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-float {
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+.animate-count {
+  animation: count-glow 0.8s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up,
+  .animate-float,
+  .animate-count {
+    animation: none;
+  }
+}
